@@ -1,6 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
-from app import db
+
+# Crear la instancia de db aquí y luego inicializarla desde app.py con db.init_app(app)
+db = SQLAlchemy()
 
 
 class Employee(db.Model, UserMixin):

@@ -6,17 +6,18 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from io import StringIO
 import csv
 
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
+# Importar la instancia de db y los modelos desde models.py (db se inicializa aquí)
+from models import db, Employee, Product
+db.init_app(app)
 
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
-
-from models import Employee, Product
 
 
 @login_manager.user_loader
