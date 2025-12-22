@@ -38,6 +38,52 @@ with app.app_context():
     db.session.commit()
 ```
 
+Seed (script de inicialización)
+ - He añadido `scripts/seed_data.py` para crear las tablas y unos datos de ejemplo (admin: emp_number=1001 / pass=P@ss123, un empleado y un producto).
+ - Ejecutar con Python 3 (desde el root del proyecto):
+
+```bash
+# si usas virtualenv y está activado
+python scripts/seed_data.py
+# o explícitamente con python3
+python3 scripts/seed_data.py
+```
+
+Notas sobre `python` vs `python3` y virtualenv
+- En algunas distribuciones el ejecutable del intérprete es `python3` en lugar de `python`. Si `python` da "command not found", usa `python3`.
+- Crea siempre un virtualenv antes de instalar dependencias para evitar el error "externally-managed-environment":
+
+```bash
+sudo apt install -y python3 python3-venv python3-pip  # (si falta python3)
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+Alternativa con Docker
+- Si prefieres no tocar la instalación de Python del host, puedo añadir un `Dockerfile` y `docker-compose.yml` para ejecutar la app y PostgreSQL en contenedores. Dime si lo quieres y lo agrego.
+
+Uso con Docker (recomendado si no quieres instalar Python localmente)
+
+1) Construir y levantar contenedores (en el root del proyecto):
+
+```bash
+docker compose up --build -d
+```
+
+2) Crear datos iniciales (seed) en el contenedor web:
+
+```bash
+docker compose run --rm web python scripts/seed_data.py
+```
+
+3) Accede a la aplicación en `http://localhost:5000`.
+
+Notas:
+- El `docker-compose.yml` crea un servicio `db` con PostgreSQL y un servicio `web` que construye la imagen desde el `Dockerfile`.
+- Las credenciales por defecto en composition son: user `cajas`, password `caja_pass`, DB `cajas_db`. Cámbialas en `docker-compose.yml` o usando variables de entorno para producción.
+
 Backups
 - Usar `backup.sh` (asegúrate de que `DATABASE_URL` esté exportada):
 ```bash

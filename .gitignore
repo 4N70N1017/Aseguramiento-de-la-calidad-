@@ -1,0 +1,47 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Pyenv
+.python-version
+
+# Environment / secrets
+.env
+.env.*
+
+# VSCode
+.vscode/
+
+# OS files
+.DS_Store
+
+# Test / cache
+.pytest_cache/
+.mypy_cache/
+
+# Local instance / DB
+instance/
+*.sqlite3
+data.db
+
+# Docker local overrides
+.docker/
