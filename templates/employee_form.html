@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Alta de empleado</h2>
+<form method="post">
+    <label for="emp_number">Número de empleado</label>
+    <input id="emp_number" name="emp_number" required>
+
+    <label for="name">Nombre</label>
+    <input id="name" name="name" required>
+
+    <label for="password">Contraseña</label>
+    <input id="password" name="password" type="password" required>
+
+    <label for="role">Rol</label>
+    <select id="role" name="role">
+        <option value="employee">Empleado</option>
+        <option value="admin">Administrador</option>
+    </select>
+
+    <button type="submit">Crear</button>
+</form>
+{% endblock %}

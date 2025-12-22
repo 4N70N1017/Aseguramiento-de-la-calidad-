@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Panel de Administrador</h2>
+<p><a href="{{ url_for('create_employee') }}">Dar de alta empleado</a> | <a
+        href="{{ url_for('reports', rtype='employees') }}">Reporte empleados (CSV)</a> | <a
+        href="{{ url_for('reports', rtype='products') }}">Reporte productos (CSV)</a> | <a
+        href="{{ url_for('logout') }}">Cerrar sesión</a></p>
+<h3>Empleados registrados</h3>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Número</th>
+        <th>Nombre</th>
+        <th>Rol</th>
+    </tr>
+    {% for e in employees %}
+    <tr>
+        <td>{{ e.id }}</td>
+        <td>{{ e.emp_number }}</td>
+        <td>{{ e.name }}</td>
+        <td>{{ e.role }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

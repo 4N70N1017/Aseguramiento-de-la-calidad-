@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Alta de producto</h2>
+<form method="post">
+    <label for="sku">SKU</label>
+    <input id="sku" name="sku" required>
+
+    <label for="name">Nombre</label>
+    <input id="name" name="name" required>
+
+    <label for="quantity">Cantidad</label>
+    <input id="quantity" name="quantity" type="number" min="0" required>
+
+    <button type="submit">Crear producto</button>
+</form>
+{% endblock %}

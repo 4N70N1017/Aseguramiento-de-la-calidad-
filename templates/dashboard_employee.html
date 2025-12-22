@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Panel de Empleado</h2>
+<p><a href="{{ url_for('create_product') }}">Dar de alta producto</a> | <a
+        href="{{ url_for('reports', rtype='products') }}">Reporte productos (CSV)</a> | <a
+        href="{{ url_for('logout') }}">Cerrar sesión</a></p>
+<h3>Productos</h3>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>SKU</th>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+    </tr>
+    {% for p in products %}
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.sku }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.quantity }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
