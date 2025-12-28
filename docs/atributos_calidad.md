@@ -1,67 +1,76 @@
-## Atributos de calidad
+ # Atributos de calidad
 
-### Contrato corto
-- Inputs: número de empleado, contraseña; datos de empleados y productos; parámetros de generación de reportes.
-- Outputs: respuestas de autenticación, vistas HTML conforme a formato corporativo, reportes descargables, mensajes de error claros.
-- Criterios de éxito: autenticación segura y roles correctamente aplicados; operaciones CRUD funcionales; reportes correctos; backups cada 7 días; tiempos de respuesta aceptables.
+## Introducción
+Un atributo de calidad es una propiedad medible del sistema que indica qué tan bien satisface las necesidades de las partes interesadas. En este documento se describen los atributos de calidad relevantes para el sistema de control de inventario y clientes de "Cajas y Derivados S.A. de C.V.", cómo se miden y qué actividades/controles se proponen para garantizar cada atributo.
 
-### Edge cases relevantes
-- Altas simultáneas que puedan generar duplicados (condiciones de carrera).
-- Conexiones intermitentes a PostgreSQL.
-- Campos vacíos o datos con formatos inválidos.
-- Restauración desde backup corrupto.
+## Lista descriptiva de atributos de calidad (con métricas y verificación)
 
----
+1) Disponibilidad
+	- Descripción: El sistema debe estar disponible para los usuarios durante las horas operativas y con un objetivo de tiempo de actividad (SLA).
+	- Métrica: % uptime semanal (por ejemplo 99.5%).
+	- Cómo garantizarlo: despliegue redundante, monitoreo y alertas, backups periódicos.
+	- Verificación: monitoreo (Prometheus/CloudWatch), registros de uptime y pruebas de restauración de backup.
 
-### 1. Rendimiento
-- Objetivo: respuestas CRUD simples < 300 ms; generación de reportes < 5 s (datasets pequeños/medios).
-- Cómo lograrlo: consultas SQL optimizadas, índices, paginación, caché cuando proceda.
-- Verificación: pruebas de carga y mediciones (benchmarks).
+2) Rendimiento (Performance)
+	- Descripción: Respuesta rápida en operaciones CRUD y generación de reportes.
+	- Métrica: Latencia media para operaciones CRUD < 300 ms; generación de reportes < 5 s para conjuntos pequeños/medios.
+	- Cómo garantizarlo: índices en PostgreSQL, consultas optimizadas, paginación, caché en la app si es necesario.
+	- Verificación: pruebas de carga y benchmarks (JMeter, locust) con percentiles (p95, p99).
 
-### 2. Usabilidad
-- Objetivo: interfaz clara, navegación intuitiva y cumplimiento de formatos corporativos.
-- Cómo: plantillas HTML/CSS responsivas, guía de estilo, mensajes claros.
-- Verificación: pruebas de usabilidad y checklist contra guía de estilo.
+3) Seguridad
+	- Descripción: Confidencialidad, integridad y disponibilidad de la información; protección contra ataques comunes.
+	- Métrica: nº de vulnerabilidades críticas en auditorías; cumplimiento de hashing y TLS.
+	- Cómo garantizarlo: HTTPS/TLS, hashing fuerte (bcrypt/argon2) para contraseñas, prepared statements/ORM para evitar inyección SQL, validación de entradas, control de acceso por roles.
+	- Verificación: pruebas de penetración básicas, revisión de configuración TLS y revisión de almacenamiento de contraseñas en la BD.
 
-### 3. Seguridad
-- Objetivo: confidencialidad e integridad de datos, protección contra ataques comunes.
-- Cómo: HTTPS/TLS, hashing seguro de contraseñas (bcrypt/argon2), uso de prepared statements/ORM, validación y saneamiento de entradas, gestión de sesiones segura, control de roles.
-- Verificación: auditoría de seguridad y pruebas básicas de penetración.
+4) Integridad de datos
+	- Descripción: Evitar duplicados y mantener relaciones consistentes entre tablas.
+	- Métrica: nº de conflictos/duplicados detectados en logs; integridad referencial verificada.
+	- Cómo garantizarlo: constraints (UNIQUE, FK), transacciones ACID para operaciones compuestas, validaciones en la capa de aplicación.
+	- Verificación: pruebas funcionales y pruebas de concurrencia que intenten crear duplicados.
 
-### 4. Integridad y consistencia de datos
-- Objetivo: evitar duplicados y mantener integridad referencial.
-- Cómo: constraints (UNIQUE, FK), transacciones ACID en operaciones compuestas.
-- Verificación: pruebas funcionales y de concurrencia.
+5) Usabilidad
+	- Descripción: Interfaz clara, adaptada al formato corporativo y fácil de entender para Admin y Empleado.
+	- Métrica: tiempo medio para completar tareas comunes (p. ej., dar de alta un producto) y tasas de error de usuario.
+	- Cómo garantizarlo: diseño responsivo, guía de estilos corporativos, mensajes de error claros y flujos simples.
+	- Verificación: pruebas de usabilidad con usuarios y checklist de cumplimiento de estilo.
 
-### 5. Disponibilidad y fiabilidad
-- Objetivo: servicio accesible en horarios operativos y tolerancia a fallos razonable.
-- Cómo: backups automáticos, monitoreo y manejo de errores con reintentos limitados.
-- Verificación: pruebas de restauración y monitoreo de uptime.
+6) Mantenibilidad
+	- Descripción: Código organizado que facilita cambios y correcciones.
+	- Métrica: tiempo medio para resolver un bug simple; cobertura mínima de tests.
+	- Cómo garantizarlo: patrón MVC, código modular, documentación y tests automatizados.
+	- Verificación: análisis de cobertura, revisión de commits y calidad de código.
 
-### 6. Mantenibilidad
-- Objetivo: código y arquitectura que faciliten cambios.
-- Cómo: patrón MVC, documentación, tests automatizados y buenas prácticas de código.
-- Verificación: cobertura de pruebas y revisiones de código.
+7) Escalabilidad
+	- Descripción: Capacidad de soportar crecimiento de usuarios y volumen de datos.
+	- Métrica: incremento viable de usuarios simultáneos sin degradación significativa.
+	- Cómo garantizarlo: separación de capas, uso de base de datos escalable (PostgreSQL), despliegue en contenedores o infraestructura escalable.
+	- Verificación: pruebas de escalado y stress tests.
 
-### 7. Escalabilidad y portabilidad
-- Objetivo: soportar crecimiento y ser desplegable en variados entornos.
-- Cómo: separación de capas, uso de tecnologías portables (Python, PostgreSQL), contenedores opcionales.
-- Verificación: pruebas de escalado y despliegue en entorno distinto.
+8) Recuperabilidad (Backup/Restore)
+	- Descripción: Backup automático cada 7 días y capacidad de restauración en entorno de prueba.
+	- Métrica: tiempo de recuperación objetivo (RTO) y punto de recuperación (RPO).
+	- Cómo garantizarlo: scripts de backup (pg_dump), verificación de checksums, pruebas periódicas de restore.
+	- Verificación: reportes de backup y pruebas de restauración.
 
-### 8. Recuperación / Backup
-- Objetivo: backups cada 7 días y restauración fiable.
-- Cómo: scripts/cron para pg_dump, verificación de integridad y retención.
-- Verificación: restores periódicos a entorno de prueba.
+9) Portabilidad / Multiplataforma
+	- Descripción: La aplicación debe ser accesible desde cualquier dispositivo con acceso web y desplegable en distintos entornos.
+	- Métrica: compatibilidad con navegadores modernos y soporte móvil.
+	- Cómo garantizarlo: HTML5/CSS responsivo, contenedores Docker para despliegue.
+	- Verificación: pruebas en distintos navegadores y dispositivos, pruebas de despliegue en entornos distintos.
 
-### 9. Formato corporativo
-- Objetivo: mostrar información conforme a la guía de estilos de la organización.
-- Cómo: hoja de estilos CSS y templates compartidos.
-- Verificación: revisión visual y checklist de cumplimiento.
+10) Conformidad con formatos corporativos
+	- Descripción: Todas las vistas deben respetar colores, tipografías y formatos de datos de la organización.
+	- Cómo garantizarlo: hoja de estilos central y templates compartidos.
+	- Verificación: checklist visual y revisión por el cliente.
 
----
+## Riesgos y consideraciones
+- Condiciones de carrera en altas simultáneas -> usar transacciones y constraints.
+- Exposición de datos sensibles -> asegurar TLS y no almacenar secretos en el código.
 
-### Calidad: métricas y verificación resumida
-- Pruebas de rendimiento: tiempos medios y percentiles para respuestas.
-- Pruebas de seguridad: lista de vulnerabilidades básicas rechazadas.
-- Pruebas funcionales: cobertura de casos críticos (autenticación, altas, duplicados, reportes, backups).
+## Resumen (matriz rápida)
+- Seguridad: hashing, TLS, prepared statements -> Verificación: auditoría, pruebas de penetración.
+- Rendimiento: índices, paginación, caché -> Verificación: pruebas de carga (p95,p99).
+- Disponibilidad/Backups: pg_dump semanal, restore-> Verificación: pruebas de restore.
+
 

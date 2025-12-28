@@ -1,0 +1,5 @@
+ReqID,Type,Requirement,Related Tests,Criterio de Aceptacion,Prioridad,Estado,Evidencia
+F-003,F,Alta empleados (sin duplicados),TC-005,TC-006,No aceptacion de duplicados; mostrar mensaje claro,Alta,Completo,
+F-004,F,Alta productos (sin duplicados),TC-007,TC-008,SKU unico; duplicado produce error,Alta,Completo,
+F-005,F,Generacion de reportes,TC-009,TC-010,Reportes descargables y con contenido correcto,Alta,Completo,
+NF-001,NF,Formatos corporativos,TC-013,UI cumple guia de estilo,Alta,Completo,

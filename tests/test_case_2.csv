@@ -1,0 +1,4 @@
+Project,Test Name,Priority,Designed By,Module,Date Designed,Executed By,Date Executed,Description,StepNo,Step Description,Test Data,Expected Result,Actual Result,Status,Observations
+Cajas y Derivados,Alta Empleado,Alta,QA Team,Empleados,2025-12-28,QA2, ,Verificar alta de empleado por admin,1,Login como admin,emp=1001|pass=P@ss123,Admin logged in, , ,
+, , , , , , , , ,2,Ir a formulario de alta, ,Formulario cargado, , ,
+, , , , , , , , ,3,Completar emp_number=2002,name=Juan,password=P@ss01,emp=2002|name=Juan|pass=P@ss01,Empleado creado y listado actualizado, , ,
