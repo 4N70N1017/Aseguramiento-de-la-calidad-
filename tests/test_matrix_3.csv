@@ -1,0 +1,4 @@
+ReqID,Type,Requirement,Related Tests,Criterio de Aceptacion,Prioridad,Estado,Evidencia
+NF-002,NF,Encriptacion/Security,TC-004,TC-014,Contrasenas hashed; uso TLS; proteccion contra inyeccion/XSS,Alta,Completo,
+NF-003,NF,Backups semanales,TC-011,TC-012,Backup creado y restaurable en entorno de prueba,Alta,Completo,
+NF-004,NF,Rendimiento,TC-009,TC-010,TC-015,CRUD <300ms; reportes pequenos <5s,Media-Alta,Completo,

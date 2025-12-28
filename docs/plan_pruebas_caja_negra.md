@@ -6,45 +6,143 @@ Pruebas funcionales y no funcionales desde la interfaz: autenticación, gestión
 ## Formato de un caso de prueba
 - ID | Título | Tipo | Precondición | Pasos | Datos de prueba | Resultado esperado | Prioridad
 
-## Casos representativos
+## Casos representativos (detallados)
 
 ### A. Autenticación
-- TC-LOGIN-01 | Login válido | Funcional | Usuario registrado | 1) Abrir login 2) Ingresar número empleado y contraseña 3) Enviar | emp:1001 / pass:P@ss123 | Acceso exitoso, redirige al dashboard según rol | Alta
-- TC-LOGIN-02 | Usuario inexistente | Funcional | — | Intentar login con número no registrado | emp:9999 | Mensaje: "Usuario no existe" | Alta
-- TC-LOGIN-03 | Contraseña incorrecta | Funcional | Usuario existente | Intentar login con pass incorrecta | emp:1001 / pass:wrong | Mensaje: "Contraseña incorrecta" | Alta
-- TC-LOGIN-04 | Inyección SQL en usuario | Seguridad | — | Ingresar payload ' OR '1'='1 en número de empleado | emp: ' OR '1'='1 | Rechazo de entrada, no autenticación | Alta
-- TC-LOGIN-05 | Expiración de sesión | Seguridad/Funcional | Login válido | 1) Loguear 2) Esperar expiración 3) Acceder a recurso protegido | — | Redirección a login | Media
+
+- TC-LOGIN-01 | Login válido | Funcional
+	- Precondición: Usuario admin o empleado registrado.
+	- Pasos:
+		1) Abrir la página `/login`.
+		2) Introducir `emp_number=1001` y `password=P@ss123`.
+		3) Pulsar `Entrar`.
+	- Resultado esperado: Inicio de sesión exitoso, redirección al dashboard adecuado y cookie de sesión establecida.
+	- Prioridad: Alta
+
+- TC-LOGIN-02 | Usuario inexistente | Funcional
+	- Precondición: Ninguno
+	- Pasos: Intentar loguear con `emp_number=9999`.
+	- Resultado esperado: Mensaje "Usuario no existe"; no crear sesión.
+	- Prioridad: Alta
+
+- TC-LOGIN-03 | Contraseña incorrecta | Funcional
+	- Precondición: Usuario registrado.
+	- Pasos: Ingresar `emp_number=1001` y `password=wrong`.
+	- Resultado esperado: Mensaje "Contraseña incorrecta"; no crear sesión.
+	- Prioridad: Alta
+
+- TC-LOGIN-04 | Inyección SQL en campos | Seguridad
+	- Precondición: Ninguno.
+	- Pasos: Introducir payloads de inyección en campos (ej.: `"' OR '1'='1"`).
+	- Resultado esperado: Entrada saneada o rechazada; no autenticación no autorizada; sin divulgación de errores del servidor.
+	- Prioridad: Alta
+
 
 ### B. Gestión de empleados (Admin)
-- TC-EMP-01 | Alta empleado válido | Funcional | Login como Admin | Crear empleado con número único | num:2002 | Empleado creado y registrado en BD | Alta
-- TC-EMP-02 | Alta empleado duplicado | Funcional | Empleado ya existe | Intentar alta con número duplicado | num:2002 | Error: "Empleado ya existe" | Alta
-- TC-EMP-03 | Alta por empleado sin permiso | Seguridad | Login como Empleado | Intentar acceder a alta de empleados | — | Acceso denegado (403) | Alta
+
+- TC-EMP-01 | Alta empleado válido
+	- Precondición: Login como Admin.
+	- Pasos: Navegar a alta, completar `emp_number=2002`, `name=Juan`, `password=P@ss01`, `role=employee`, enviar.
+	- Resultado esperado: Empleado creado, registro en BD, mensaje de éxito.
+	- Prioridad: Alta
+
+- TC-EMP-02 | Alta empleado duplicado
+	- Precondición: Empleado con `emp_number=2002` ya existe.
+	- Pasos: Repetir alta con mismo número.
+	- Resultado esperado: Mensaje claro "Empleado ya existe" y no duplicación en BD.
+	- Prioridad: Alta
+
+- TC-EMP-03 | Restricción de permisos
+	- Precondición: Login como Empleado.
+	- Pasos: Intentar acceder a `/admin/employees/create`.
+	- Resultado esperado: Acceso denegado (403) o la opción no visible; registro en logs.
+	- Prioridad: Alta
+
 
 ### C. Gestión de productos (Empleado)
-- TC-PROD-01 | Alta producto válido | Funcional | Login como Empleado | Crear producto con SKU único | sku:PROD-001 | Producto agregado y listado actualizado | Alta
-- TC-PROD-02 | Alta producto duplicado | Funcional | SKU ya existe | Intentar crear con SKU duplicado | sku:PROD-001 | Error: "Producto ya existe" | Alta
+
+- TC-PROD-01 | Alta producto válido
+	- Precondición: Login como Empleado.
+	- Pasos: Crear producto con `sku=PROD-001`, `name=Caja`, `quantity=10`.
+	- Resultado esperado: Producto agregado; listado actualizado.
+	- Prioridad: Alta
+
+- TC-PROD-02 | Alta producto duplicado
+	- Precondición: SKU ya existente.
+	- Pasos: Intentar crear con mismo SKU.
+	- Resultado esperado: Mensaje "Producto ya existe"; no duplicación.
+	- Prioridad: Alta
+
 
 ### D. Reportes
-- TC-REPORT-01 | Generar reporte inventario | Funcional | Datos en inventario | Seleccionar filtros y generar | — | Reporte descargable, formato corporativo | Alta
-- TC-REPORT-02 | Reporte con muchos registros | Rendimiento | >10k registros | Generar reporte | — | Generación aceptable (<15s) o proceso por lotes | Media
 
-### E. UI y formatos corporativos
-- TC-UI-01 | Verificación visual de estilo | Manual | Cualquier página | Revisar header/footer, colores, tipografía | — | Cumple guía de estilo | Alta
+- TC-REPORT-01 | Generar reporte inventario (pequeño)
+	- Precondición: Datos en inventario (< 1000 registros).
+	- Pasos: Generar reporte desde UI.
+	- Resultado esperado: Archivo CSV descargable; contenido correcto; formato conforme a guía.
+	- Prioridad: Alta
 
-### F. Seguridad observable
-- TC-SEC-01 | HTTPS forzado | Seguridad | Herramienta de interceptación | Acceder vía HTTP | — | Redirección a HTTPS; credenciales no en texto claro | Alta
-- TC-SEC-02 | Hash de contraseñas en BD | Seguridad | Acceso restringido a BD | Revisar campo de contraseña | — | Contraseñas hashed, no en texto plano | Alta
+- TC-REPORT-02 | Generar reporte grande (rendimiento)
+	- Precondición: > 10k registros en inventario.
+	- Pasos: Generar reporte.
+	- Resultado esperado: Proceso completado o generación por lotes; tiempo aceptable (definir umbral, ej. < 15 s) y sin errores 5xx.
+	- Prioridad: Media
 
-### G. Backups
-- TC-BACKUP-01 | Backup programado | Procedimiento | DB con datos | Ejecutar backup (cron) | — | Archivo generado con timestamp y checksum | Alta
-- TC-BACKUP-02 | Restauración de backup | Procedimiento | Backup válido | Restaurar en entorno de pruebas | — | Datos restaurados y consistentes | Alta
 
-### H. Rendimiento / Carga
-- TC-LOAD-01 | Carga concurrente de logins | Rendimiento | Herramienta (JMeter) | Ejecutar 100 logins concurrentes | — | Sin errores 5xx, latencia aceptable | Media-Alta
+### E. Backups y restauración
 
-### I. Mensajería de errores
-- TC-ERR-01 | Mensajes claros para duplicados | Usabilidad | Intento de alta duplicada | — | Mensaje claro y accionable | Alta
+- TC-BACKUP-01 | Ejecución del backup programado
+	- Precondición: DB con datos.
+	- Pasos: Ejecutar `backup.sh` o simular cron.
+	- Resultado esperado: Archivo SQL creado con timestamp; checksum correcto.
+	- Prioridad: Alta
 
-## Registro de resultados
-- Para cada caso se registrará: Pass/Fail, evidencias (screenshots, logs), tiempo, tester, fecha.
+- TC-BACKUP-02 | Restauración desde backup
+	- Precondición: Backup existente.
+	- Pasos: Restaurar en entorno de prueba.
+	- Resultado esperado: Datos restaurados y consistentes; validaciones básicas OK.
+	- Prioridad: Alta
+
+
+### F. Seguridad observable (caja negra)
+
+- TC-SEC-01 | Forzar HTTP -> HTTPS
+	- Precondición: Servicio corriendo.
+	- Pasos: Acceder por `http://`.
+	- Resultado esperado: Redirección a `https://` (si está configurado en entorno de despliegue); credenciales no visibles.
+	- Prioridad: Alta
+
+- TC-SEC-02 | Almacenamiento de contraseñas
+	- Precondición: Acceso restringido a BD.
+	- Pasos: Revisar campo `password_hash` en BD.
+	- Resultado esperado: Hashes, no texto claro; algoritmo fuerte.
+	- Prioridad: Alta
+
+
+### G. Usabilidad y formatos corporativos
+
+- TC-UI-01 | Verificación visual
+	- Precondición: Acceso a interfaz.
+	- Pasos: Revisar header/footer, colores, tipografías, formatos de fecha y moneda.
+	- Resultado esperado: Cumple guía de estilo.
+	- Prioridad: Alta
+
+
+### H. Rendimiento / Carga (externo)
+
+- TC-LOAD-01 | Carga concurrente (ejemplo)
+	- Precondición: Herramienta de pruebas (JMeter/locust)
+	- Pasos: Ejecutar 100 logins concurrentes y medir latencias.
+	- Resultado esperado: Latencias dentro de SLA; sin errores 5xx.
+	- Prioridad: Media-Alta
+
+
+## Registro y ejecución de tests
+- Para cada caso se registrará: ID, resultado (Pass/Fail), evidencias (screenshots, logs), tiempo de ejecución, tester y fecha.
+- Se recomienda usar una planilla CSV/exportable con columnas: ID, Caso, Precondición, Pasos, Datos, Resultado esperado, Resultado real, Evidencias, Tester, Fecha, Observaciones.
+
+## Priorización
+- Alta: Autenticación, control de roles, prevención de duplicados, backups, seguridad básica, UI corporativa.
+- Media: Reportes de gran tamaño, pruebas de carga extensivas, usabilidad detallada.
+
 

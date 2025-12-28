@@ -1,0 +1,5 @@
+ReqID,Type,Requirement,Related Tests,Criterio de Aceptacion,Prioridad,Estado,Evidencia
+T-001,T,HTML5/CSS/Python(Flask),TC-001..TC-013,Frontend y backend funcionando,Alta,Completo,
+T-002,T,PostgreSQL,TC-009..TC-012,Conexion y CRUD en PostgreSQL,Alta,Completo,
+F-001,F,Autenticacion por numero de empleado,TC-001,TC-004,Login correcto con credenciales validas; errores claros,Alta,Completo,
+F-002,F,Roles Admin/Empleado,TC-001,TC-005..TC-007,Admin puede crear empleados; empleado no tiene permisos,Alta,Completo,
