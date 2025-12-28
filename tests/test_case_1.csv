@@ -1,4 +1,9 @@
-Proyecto,Nombre de la prueba,Prioridad,Diseñada por,Módulo,Fecha diseño,Ejecutada por,Fecha ejecución,Descripción,Paso,Pasos de prueba,Datos de prueba,Resultado esperado,Resultado actual,Estatus (Calificó/no calificó),Observaciones
-Cajas y Derivados,Login Admin,Alta,QA Team,Login,2025-12-28,QA1, ,Verificar login de administrador,1,Abrir /login,,Página de login cargada,,Por ejecutar,
-Cajas y Derivados,Login Admin,Alta,QA Team,Login,2025-12-28,QA1, ,Verificar login de administrador,2,Ingresar emp_number y password,emp_number=1001;password=P@ss123,Redirección a /admin y sesión establecida,,Por ejecutar,
-Cajas y Derivados,Login Admin,Alta,QA Team,Login,2025-12-28,QA1, ,Verificar login de administrador,3,Verificar dashboard admin cargado,,Listado de empleados visible,,Por ejecutar,
+
+"Nombre del Proyecto:","Cajas y Derivados S.A. de C.V.","","","CASO DE PRUEBA","","","","","","","","","",""
+"Prioridad de prueba:","Alta","Prueba diseñada por:","QA Team","Nombre del módulo:","Login","Fecha del diseño de la prueba:","2025-12-28","Nombre de la prueba:","Login Admin","Prueba ejecutada por:","QA1","Descripción:","Verificar login de administrador","Fecha de la ejecución de la prueba:",""
+
+Paso,Pasos de prueba,Datos de prueba,Resultado esperado,Resultado Actual,Estatus (Calificó/no calificó),Observaciones
+1,Abrir /login,,Página de login cargada,,,
+2,Ingresar emp_number=1001; password=P@ss123,emp_number=1001;password=P@ss123,Redirección a /admin y sesión establecida,,,
+3,Verificar dashboard admin cargado,,Listado de empleados visible,,,
+

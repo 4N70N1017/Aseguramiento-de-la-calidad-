@@ -1,5 +1,9 @@
-Nombre del sistema,Fecha de revisión,Encargado de la revisión,No,Módulo,Descripción,Num. De pasos que aprobaron,Num. De pasos que NO aprobaron,Resultado esperado del módulo en general,Resultado real del módulo en general,Calificó/no calificó,Observaciones,Evidencia
-Cajas y Derivados,2025-12-28,QA Team,1,HTML5/CSS/Python(Flask),Frontend en HTML/CSS y backend en Python funcionando,, ,Funcionalidad completa del frontend y backend,Funcionalidad verificada,Calificó,,
-Cajas y Derivados,2025-12-28,QA Team,2,PostgreSQL,Conexión y operaciones CRUD sobre PostgreSQL,, ,Conexión estable y operaciones CRUD correctas,Conexión/verificación OK,Calificó,,
-Cajas y Derivados,2025-12-28,QA Team,3,Autenticación por número de empleado,Pruebas de login y mensajes de error claros,3,0,Inicio de sesión correcto con credenciales válidas; errores claros,Comportamiento conforme,Calificó,,
-Cajas y Derivados,2025-12-28,QA Team,4,Roles Admin/Empleado,Verificar permisos por rol,3,0,Admin puede crear empleados; empleado sin permiso,Permisos aplicados,Calificó,,
+"Nombre del sistema:","Cajas y Derivados S.A. de C.V.","","","","","","","","","","",""
+"Fecha de revisión:","2025-12-28","Encargado de la revisión:","QA Team","","","","","","","","",""
+
+No.,Módulo,Descripción,Num. De pasos que aprobaron,Num. De pasos que NO aprobaron,Resultado esperado del módulo en general,Resultado real del módulo en general,Calificó / no calificó,Observaciones
+1,HTML5/CSS/Python (Flask),Frontend en HTML/CSS y backend en Python funcionando,, ,Expectativa: frontend y backend funcionales,Funcionalidad verificada,Calificó,
+2,PostgreSQL,Conexión y operaciones CRUD sobre PostgreSQL,, ,Expectativa: conexiones y CRUD correctos,Conexión/verificación OK,Calificó,
+3,Autenticación por número de empleado,Pruebas de login y mensajes de error claros,, ,Expectativa: login correcto y mensajes claros,Comportamiento conforme,Calificó,
+4,Roles Admin/Empleado,Verificar permisos por rol,, ,Expectativa: separación de permisos por rol,Permisos aplicados,Calificó,
+5,,,,,,,,

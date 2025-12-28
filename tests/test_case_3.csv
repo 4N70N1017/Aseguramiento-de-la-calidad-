@@ -1,4 +1,9 @@
-Proyecto,Nombre de la prueba,Prioridad,Diseñada por,Módulo,Fecha diseño,Ejecutada por,Fecha ejecución,Descripción,Paso,Pasos de prueba,Datos de prueba,Resultado esperado,Resultado actual,Estatus (Calificó/no calificó),Observaciones
-Cajas y Derivados,Alta Producto,Alta,QA Team,Productos,2025-12-28,QA3, ,Verificar alta de producto por empleado,1,Login como empleado,emp_number=2001;password=empleado,Empleado autenticado,,Por ejecutar,
-Cajas y Derivados,Alta Producto,Alta,QA Team,Productos,2025-12-28,QA3, ,Verificar alta de producto por empleado,2,Ir a formulario de producto,,Formulario cargado,,Por ejecutar,
-Cajas y Derivados,Alta Producto,Alta,QA Team,Productos,2025-12-28,QA3, ,Verificar alta de producto por empleado,3,Completar formulario con sku y cantidad,sku=PROD-002;name=Caja mediana;quantity=50,Producto creado y listado actualizado,,Por ejecutar,
+
+"Nombre del Proyecto:","Cajas y Derivados S.A. de C.V.","","","CASO DE PRUEBA","","","","","","","","","",""
+"Prioridad de prueba:","Alta","Prueba diseñada por:","QA Team","Nombre del módulo:","Productos","Fecha del diseño de la prueba:","2025-12-28","Nombre de la prueba:","Alta Producto","Prueba ejecutada por:","QA3","Descripción:","Verificar alta de producto por empleado","Fecha de la ejecución de la prueba:",""
+
+Paso,Pasos de prueba,Datos de prueba,Resultado esperado,Resultado Actual,Estatus (Calificó/no calificó),Observaciones
+1,Login como empleado,emp_number=2001;password=empleado,Empleado autenticado,,,
+2,Ir a formulario de producto,,Formulario cargado,,,
+3,Completar formulario con sku y cantidad,sku=PROD-002;name=Caja mediana;quantity=50,Producto creado y listado actualizado,,,
+

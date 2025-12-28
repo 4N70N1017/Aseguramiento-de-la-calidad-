@@ -1,6 +1,11 @@
 
-Proyecto,Nombre de la prueba,Prioridad,Diseñada por,Módulo,Fecha diseño,Ejecutada por,Fecha ejecución,Descripción,Paso,Pasos de prueba,Datos de prueba,Resultado esperado,Resultado actual,Estatus (Calificó/no calificó),Observaciones
-Cajas y Derivados,Alta Empleado,Alta,QA Team,Empleados,2025-12-28,QA2, ,Verificar alta de empleado por admin,1,Abrir /login y autenticar como admin,emp_number=1001;password=P@ss123,Admin autenticado,,Por ejecutar,
-Cajas y Derivados,Alta Empleado,Alta,QA Team,Empleados,2025-12-28,QA2, ,Verificar alta de empleado por admin,2,Ir a formulario de alta y completar datos,emp_number=2002;name=Juan;password=P@ss01,Formulario enviado y empleado creado,,Por ejecutar,
-Cajas y Derivados,Alta Empleado,Alta,QA Team,Empleados,2025-12-28,QA2, ,Verificar alta de empleado por admin,3,Verificar listado de empleados actualizados,,Listado muestra emp_number=2002,,Por ejecutar,
+
+"Nombre del Proyecto:","Cajas y Derivados S.A. de C.V.","","","CASO DE PRUEBA","","","","","","","","","",""
+"Prioridad de prueba:","Alta","Prueba diseñada por:","QA Team","Nombre del módulo:","Empleados","Fecha del diseño de la prueba:","2025-12-28","Nombre de la prueba:","Alta Empleado","Prueba ejecutada por:","QA2","Descripción:","Verificar alta de empleado por admin","Fecha de la ejecución de la prueba:",""
+
+Paso,Pasos de prueba,Datos de prueba,Resultado esperado,Resultado Actual,Estatus (Calificó/no calificó),Observaciones
+1,Abrir /login y autenticar como admin,emp_number=1001;password=P@ss123,Admin autenticado,,,
+2,Ir a formulario de alta y completar datos,emp_number=2002;name=Juan;password=P@ss01,Formulario enviado y empleado creado,,,
+3,Verificar listado de empleados actualizados,,Listado muestra emp_number=2002,,,
+
 

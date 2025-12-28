@@ -1,5 +1,10 @@
 
-Nombre del sistema,Fecha de revisión,Encargado de la revisión,No,Módulo,Descripción,Num. De pasos que aprobaron,Num. De pasos que NO aprobaron,Resultado esperado del módulo en general,Resultado real del módulo en general,Calificó/no calificó,Observaciones,Evidencia
-Cajas y Derivados,2025-12-28,QA Team,9,Encriptación / Seguridad,Revisar hashes y pruebas de inyección/XSS, , ,Contraseñas hashed; TLS activo; protecciones aplicadas,Verificado parcialmente,Por ejecutar pruebas adicionales,
-Cajas y Derivados,2025-12-28,QA Team,10,Backups semanales,Verificar creación y restauración de backups, , ,Backup creado y restaurable en entorno de prueba,Restore probado en entorno de test,Calificó,
-Cajas y Derivados,2025-12-28,QA Team,11,Rendimiento,Pruebas de latencia y carga (CRUD y reportes), , ,CRUD <300ms promedio; reportes pequeños <5s,Requiere optimización en p95,pending,
+"Nombre del sistema:","Cajas y Derivados S.A. de C.V.","","","","","","","","","","",""
+"Fecha de revisión:","2025-12-28","Encargado de la revisión:","QA Team","","","","","","","","",""
+
+No.,Módulo,Descripción,Num. De pasos que aprobaron,Num. De pasos que NO aprobaron,Resultado esperado del módulo en general,Resultado real del módulo en general,Calificó / no calificó,Observaciones
+1,Encriptación / Seguridad,Revisar hashes y pruebas de inyección/XSS,, ,Expectativa: contraseñas hashed y protecciones,Verificado parcialmente,Por ejecutar pruebas adicionales
+2,Backups semanales,Verificar creación y restauración de backups,, ,Expectativa: backup creado y restaurable,Restore probado en entorno de test,Calificó
+3,Rendimiento,Pruebas de latencia y carga (CRUD y reportes),, ,Expectativa: CRUD <300ms promedio; reportes pequeños <5s,Requiere optimización en p95,Pending
+4,,,,,,,,
+5,,,,,,,,
