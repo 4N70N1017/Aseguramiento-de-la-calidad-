@@ -1,4 +1,4 @@
-Project,Test Name,Priority,Designed By,Module,Date Designed,Executed By,Date Executed,Description,StepNo,Step Description,Test Data,Expected Result,Actual Result,Status,Observations
-Cajas y Derivados,Login Admin,Alta,QA Team,Login,2025-12-28,QA1, ,Verificar login de administrador,1,Abrir /login, ,Página de login cargada, , ,
-, , , , , , , , ,2,Ingresar emp_number=1001,password=P@ss123,emp=1001|pass=P@ss123,Redirección a /admin y sesión establecida, , ,
-, , , , , , , , ,3,Verificar dashboard admin cargado, ,Listado de empleados visible, , ,
+Proyecto,Nombre de la prueba,Prioridad,Diseñada por,Módulo,Fecha diseño,Ejecutada por,Fecha ejecución,Descripción,Paso,Pasos de prueba,Datos de prueba,Resultado esperado,Resultado actual,Estatus (Calificó/no calificó),Observaciones
+Cajas y Derivados,Login Admin,Alta,QA Team,Login,2025-12-28,QA1, ,Verificar login de administrador,1,Abrir /login,,Página de login cargada,,Por ejecutar,
+Cajas y Derivados,Login Admin,Alta,QA Team,Login,2025-12-28,QA1, ,Verificar login de administrador,2,Ingresar emp_number y password,emp_number=1001;password=P@ss123,Redirección a /admin y sesión establecida,,Por ejecutar,
+Cajas y Derivados,Login Admin,Alta,QA Team,Login,2025-12-28,QA1, ,Verificar login de administrador,3,Verificar dashboard admin cargado,,Listado de empleados visible,,Por ejecutar,

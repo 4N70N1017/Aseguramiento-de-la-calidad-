@@ -1,5 +1,6 @@
-ReqID,Type,Requirement,Related Tests,Criterio de Aceptacion,Prioridad,Estado,Evidencia
-F-003,F,Alta empleados (sin duplicados),TC-005,TC-006,No aceptacion de duplicados; mostrar mensaje claro,Alta,Completo,
-F-004,F,Alta productos (sin duplicados),TC-007,TC-008,SKU unico; duplicado produce error,Alta,Completo,
-F-005,F,Generacion de reportes,TC-009,TC-010,Reportes descargables y con contenido correcto,Alta,Completo,
-NF-001,NF,Formatos corporativos,TC-013,UI cumple guia de estilo,Alta,Completo,
+
+Nombre del sistema,Fecha de revisión,Encargado de la revisión,No,Módulo,Descripción,Num. De pasos que aprobaron,Num. De pasos que NO aprobaron,Resultado esperado del módulo en general,Resultado real del módulo en general,Calificó/no calificó,Observaciones,Evidencia
+Cajas y Derivados,2025-12-28,QA Team,5,Alta empleados (sin duplicados),Verificar que no se permiten duplicados al crear empleados,3,0,No aceptación de duplicados; mensaje de error claro,Prueba pasada,Calificó,,
+Cajas y Derivados,2025-12-28,QA Team,6,Alta productos (sin duplicados),Verificar que SKU es único y no se duplica,3,0,SKU único y manejo de duplicados correcto,Prueba pasada,Calificó,,
+Cajas y Derivados,2025-12-28,QA Team,7,Generación de reportes,Generar reportes y validar contenido y formato, , ,Reportes descargables con contenido correcto,Reportes validados,Calificó,,
+Cajas y Derivados,2025-12-28,QA Team,8,Formatos corporativos,Validación visual de colores, tipografías y formatos, , ,UI conforme a guía de estilo,Validación manual OK,Calificó,,

@@ -1,4 +1,4 @@
-Project,Test Name,Priority,Designed By,Module,Date Designed,Executed By,Date Executed,Description,StepNo,Step Description,Test Data,Expected Result,Actual Result,Status,Observations
-Cajas y Derivados,Alta Producto,Alta,QA Team,Productos,2025-12-28,QA3, ,Verificar alta de producto por empleado,1,Login como empleado,emp=2001|pass=empleado,Empleado logged in, , ,
-, , , , , , , , ,2,Ir a formulario producto, ,Formulario cargado, , ,
-, , , , , , , , ,3,Completar sku=PROD-002,name=Caja mediana,quantity=50,sku=PROD-002|name=Caja mediana|qty=50,Producto creado y listado actualizado, , ,
+Proyecto,Nombre de la prueba,Prioridad,Diseñada por,Módulo,Fecha diseño,Ejecutada por,Fecha ejecución,Descripción,Paso,Pasos de prueba,Datos de prueba,Resultado esperado,Resultado actual,Estatus (Calificó/no calificó),Observaciones
+Cajas y Derivados,Alta Producto,Alta,QA Team,Productos,2025-12-28,QA3, ,Verificar alta de producto por empleado,1,Login como empleado,emp_number=2001;password=empleado,Empleado autenticado,,Por ejecutar,
+Cajas y Derivados,Alta Producto,Alta,QA Team,Productos,2025-12-28,QA3, ,Verificar alta de producto por empleado,2,Ir a formulario de producto,,Formulario cargado,,Por ejecutar,
+Cajas y Derivados,Alta Producto,Alta,QA Team,Productos,2025-12-28,QA3, ,Verificar alta de producto por empleado,3,Completar formulario con sku y cantidad,sku=PROD-002;name=Caja mediana;quantity=50,Producto creado y listado actualizado,,Por ejecutar,

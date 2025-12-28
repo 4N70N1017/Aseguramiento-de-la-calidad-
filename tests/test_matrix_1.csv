@@ -1,5 +1,5 @@
-ReqID,Type,Requirement,Related Tests,Criterio de Aceptacion,Prioridad,Estado,Evidencia
-T-001,T,HTML5/CSS/Python(Flask),TC-001..TC-013,Frontend y backend funcionando,Alta,Completo,
-T-002,T,PostgreSQL,TC-009..TC-012,Conexion y CRUD en PostgreSQL,Alta,Completo,
-F-001,F,Autenticacion por numero de empleado,TC-001,TC-004,Login correcto con credenciales validas; errores claros,Alta,Completo,
-F-002,F,Roles Admin/Empleado,TC-001,TC-005..TC-007,Admin puede crear empleados; empleado no tiene permisos,Alta,Completo,
+Nombre del sistema,Fecha de revisión,Encargado de la revisión,No,Módulo,Descripción,Num. De pasos que aprobaron,Num. De pasos que NO aprobaron,Resultado esperado del módulo en general,Resultado real del módulo en general,Calificó/no calificó,Observaciones,Evidencia
+Cajas y Derivados,2025-12-28,QA Team,1,HTML5/CSS/Python(Flask),Frontend en HTML/CSS y backend en Python funcionando,, ,Funcionalidad completa del frontend y backend,Funcionalidad verificada,Calificó,,
+Cajas y Derivados,2025-12-28,QA Team,2,PostgreSQL,Conexión y operaciones CRUD sobre PostgreSQL,, ,Conexión estable y operaciones CRUD correctas,Conexión/verificación OK,Calificó,,
+Cajas y Derivados,2025-12-28,QA Team,3,Autenticación por número de empleado,Pruebas de login y mensajes de error claros,3,0,Inicio de sesión correcto con credenciales válidas; errores claros,Comportamiento conforme,Calificó,,
+Cajas y Derivados,2025-12-28,QA Team,4,Roles Admin/Empleado,Verificar permisos por rol,3,0,Admin puede crear empleados; empleado sin permiso,Permisos aplicados,Calificó,,

@@ -1,4 +1,5 @@
-ReqID,Type,Requirement,Related Tests,Criterio de Aceptacion,Prioridad,Estado,Evidencia
-NF-002,NF,Encriptacion/Security,TC-004,TC-014,Contrasenas hashed; uso TLS; proteccion contra inyeccion/XSS,Alta,Completo,
-NF-003,NF,Backups semanales,TC-011,TC-012,Backup creado y restaurable en entorno de prueba,Alta,Completo,
-NF-004,NF,Rendimiento,TC-009,TC-010,TC-015,CRUD <300ms; reportes pequenos <5s,Media-Alta,Completo,
+
+Nombre del sistema,Fecha de revisión,Encargado de la revisión,No,Módulo,Descripción,Num. De pasos que aprobaron,Num. De pasos que NO aprobaron,Resultado esperado del módulo en general,Resultado real del módulo en general,Calificó/no calificó,Observaciones,Evidencia
+Cajas y Derivados,2025-12-28,QA Team,9,Encriptación / Seguridad,Revisar hashes y pruebas de inyección/XSS, , ,Contraseñas hashed; TLS activo; protecciones aplicadas,Verificado parcialmente,Por ejecutar pruebas adicionales,
+Cajas y Derivados,2025-12-28,QA Team,10,Backups semanales,Verificar creación y restauración de backups, , ,Backup creado y restaurable en entorno de prueba,Restore probado en entorno de test,Calificó,
+Cajas y Derivados,2025-12-28,QA Team,11,Rendimiento,Pruebas de latencia y carga (CRUD y reportes), , ,CRUD <300ms promedio; reportes pequeños <5s,Requiere optimización en p95,pending,
